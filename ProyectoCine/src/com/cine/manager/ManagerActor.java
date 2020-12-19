@@ -18,7 +18,7 @@ public class ManagerActor {
     
     ManagerDAOCine managerDAOCine = new ManagerDAOCine();
     
-    public void insertarAutor( Actor objActor ) throws Exception
+    public void insertarActor( Actor objActor ) throws Exception
     {
         managerDAOCine.insertar(objActor);
     }
