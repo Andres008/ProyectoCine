@@ -31,4 +31,8 @@ public class ManagerCliente {
     public List<Cliente> buscarTodosClientes() throws Exception{
         return managerDAOCine.findAll(Cliente.class, "o.apellidos ASC");
     }
+
+    public Cliente buscarClienteByCedula(String cedula) throws Exception {
+       return (Cliente) managerDAOCine.findById(Cliente.class, cedula);
+    }
 }

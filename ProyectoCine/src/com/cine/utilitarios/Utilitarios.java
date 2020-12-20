@@ -7,6 +7,7 @@ package com.cine.utilitarios;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +38,11 @@ public class Utilitarios {
              throw new Exception("Correo no válido.");
      }
      
+     public String cambiarDateString(Date fecha) {
+         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+         return formato.format(fecha);
+     }
+     
      public Date cambiarStringDate(String cadena) throws Exception{
          try {
              SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -44,5 +50,12 @@ public class Utilitarios {
          } catch (ParseException ex) {
              throw new Exception(ex.getMessage());
          }
+     }
+     
+     public Date sumarRestarDiasFecha(Date fecha, int dias){
+           Calendar calendar = Calendar.getInstance();
+           calendar.setTime(fecha); // Configuramos la fecha que se recibe
+           calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0
+           return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
      }
 }

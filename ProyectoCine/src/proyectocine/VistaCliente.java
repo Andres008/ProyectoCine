@@ -312,9 +312,10 @@ public class VistaCliente extends javax.swing.JFrame {
             objCliente.setCedula(txtCedula.getText());
             objCliente.setNombres(txtNombre.getText());
             objCliente.setApellidos(txtApellido.getText());
-            objCliente.setDireccion(txtApellido.getText());
+            objCliente.setDireccion(txtDireccion.getText());
             validarClaveIguales(txtClave1.getText(), txtClave2.getText());
-            objCliente.setCorreoElectronico(txtDireccion.getText());
+            objCliente.setClave(txtClave1.getText());
+            objCliente.setCorreoElectronico(txtCorreoElectronico.getText());
             managerCliente.ingresarCliente(objCliente);
             txtCedula.setText("");
             txtApellido.setText("");
@@ -370,9 +371,10 @@ public class VistaCliente extends javax.swing.JFrame {
             objCliente.setCedula(txtCedula.getText());
             objCliente.setNombres(txtNombre.getText());
             objCliente.setApellidos(txtApellido.getText());
-            objCliente.setDireccion(txtApellido.getText());
+            objCliente.setDireccion(txtDireccion.getText());
             validarClaveIguales(txtClave1.getText(), txtClave2.getText());
-            objCliente.setCorreoElectronico(txtDireccion.getText());
+            objCliente.setClave(txtClave1.getText());
+            objCliente.setCorreoElectronico(txtCorreoElectronico.getText());
             managerCliente.editarCliente(objCliente);
             txtCedula.setText("");
             txtApellido.setText("");
