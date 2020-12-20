@@ -27,7 +27,6 @@ public class VistaActor extends javax.swing.JFrame {
      Actor objActorAct = new Actor();
     public VistaActor() {
         initComponents();
-        crearModeloTabla();
         listarAutoresTbl();
     }
     
@@ -40,6 +39,7 @@ public class VistaActor extends javax.swing.JFrame {
     }
     
     private void listarAutoresTbl(){
+        crearModeloTabla();
          try {
              ManagerActor managerActor = new ManagerActor();
              lstActores = managerActor.buscarTodosActor();
@@ -324,6 +324,7 @@ public class VistaActor extends javax.swing.JFrame {
             txtApellido.setText("");
             txtNombre.setText("");
             txtPais.setText("");
+            listarAutoresTbl();
          } catch (Exception ex) {
              Logger.getLogger(VistaActor.class.getName()).log(Level.SEVERE, null, ex);
          }
