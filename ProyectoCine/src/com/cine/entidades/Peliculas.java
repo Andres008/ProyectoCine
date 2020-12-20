@@ -10,14 +10,18 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,6 +46,8 @@ public class Peliculas implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
+    @SequenceGenerator(name = "PELICULA_GENERATOR", sequenceName = "SEQ_PELICULA", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PELICULA_GENERATOR")
     @Basic(optional = false)
     @Column(name = "id")
     private BigDecimal id;
@@ -53,7 +59,7 @@ public class Peliculas implements Serializable {
     @Column(name = "fecha_hasta")
     @Temporal(TemporalType.DATE)
     private Date fechaHasta;
-    @OneToMany(mappedBy = "idPelicula")
+    @OneToMany(mappedBy = "idPelicula", cascade = CascadeType.ALL)
     private List<PeliculasActor> peliculasActorList;
     @OneToMany(mappedBy = "idPelicula")
     private List<Funciones> funcionesList;

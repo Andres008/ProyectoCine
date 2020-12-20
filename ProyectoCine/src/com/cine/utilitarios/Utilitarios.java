@@ -5,6 +5,12 @@
  */
 package com.cine.utilitarios;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author acardenas
@@ -29,5 +35,14 @@ public class Utilitarios {
          if (!cadena.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"))
              throw new Exception("Correo no válido.");
+     }
+     
+     public Date cambiarStringDate(String cadena) throws Exception{
+         try {
+             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+             return formato.parse(cadena);
+         } catch (ParseException ex) {
+             throw new Exception(ex.getMessage());
+         }
      }
 }
