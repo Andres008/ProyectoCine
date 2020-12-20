@@ -8,6 +8,7 @@ package proyectocine;
 import com.cine.entidades.Actor;
 import com.cine.entidades.Cliente;
 import com.cine.manager.ManagerCliente;
+import com.cine.utilitarios.Utilitarios;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -303,8 +304,11 @@ public class VistaCliente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
+            Utilitarios util = new Utilitarios();
             ManagerCliente managerCliente = new ManagerCliente();
             Cliente objCliente = new Cliente();
+            util.validarSoloNumeros(txtCedula.getText());
+            util.validarCorreoValido(txtCorreoElectronico.getText());
             objCliente.setCedula(txtCedula.getText());
             objCliente.setNombres(txtNombre.getText());
             objCliente.setApellidos(txtApellido.getText());
@@ -351,11 +355,18 @@ public class VistaCliente extends javax.swing.JFrame {
                
     }//GEN-LAST:event_jButton2ActionPerformed
 
+   
+    
+    
+    
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
       
         try {
+            Utilitarios util = new Utilitarios();
             ManagerCliente managerCliente = new ManagerCliente();
             Cliente objCliente = new Cliente();
+            util.validarSoloNumeros(txtCedula.getText());
+            util.validarCorreoValido(txtCorreoElectronico.getText());
             objCliente.setCedula(txtCedula.getText());
             objCliente.setNombres(txtNombre.getText());
             objCliente.setApellidos(txtApellido.getText());
@@ -372,13 +383,13 @@ public class VistaCliente extends javax.swing.JFrame {
             txtNombre.setText("");
             listarAutoresTbl();
         } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
             Logger.getLogger(VistaCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     public void validarClaveIguales(String clave1, String clave2) throws Exception{
-        if ( ! clave1.equals(clave1))
+        if ( ! clave1.equals(clave2))
             throw new Exception("Error las clave no son iguales");
     }
     /**
